@@ -1,0 +1,12 @@
+{
+  "domain": "onedrive_backup",
+  "name": "OneDrive Backup",
+  "version": "0.2.5",
+  "documentation": "https://github.com/augleao/onedrive-backup-integration",
+  "issue_tracker": "https://github.com/augleao/onedrive-backup-integration/issues",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": ["@augleao"],
+  "homeassistant": "2025.1.0",
+  "iot_class": "local_polling"
+}
