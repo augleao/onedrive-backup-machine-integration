@@ -1,11 +1,11 @@
 {
   "domain": "onedrive_backup",
   "name": "OneDrive Backup",
-  "version": "0.2.5",
+  "codeowners": ["@augleao"],
+  "dependencies": [],
   "documentation": "https://github.com/augleao/onedrive-backup-machine-integration",
+  "iot_class": "local_polling",
   "issue_tracker": "https://github.com/augleao/onedrive-backup-machine-integration/issues",
   "requirements": [],
-  "dependencies": [],
-  "codeowners": ["@augleao"],
-  "iot_class": "local_polling"
+  "version": "0.2.5"
 }
