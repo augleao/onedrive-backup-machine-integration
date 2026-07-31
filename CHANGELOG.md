@@ -6,6 +6,12 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ## [Unreleased]
 
+## [0.2.7] - 2026-07-31
+
+### Changed
+- README now links the public companion Supervisor add-on at `augleao/onedrive-backup-machine`.
+- Clarified install order: companion add-on first, then this HACS integration.
+
 ## [0.2.6] - 2026-07-31
 
 ### Changed
