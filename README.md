@@ -1,11 +1,12 @@
 # OneDrive Backup Machine Integration
 
-Home Assistant custom integration that exposes status and controls for a **companion OneDrive Backup Machine API/add-on** in the dashboard.
+Home Assistant custom integration that exposes status and controls for the companion **[OneDrive Backup Machine](https://github.com/augleao/onedrive-backup-machine)** Supervisor add-on/API.
 
 This repository contains only the HACS integration. It does **not** upload Home Assistant backups to OneDrive by itself.
 
 Current version:
-- Integration: 0.2.6
+- Integration: 0.2.7
+- Companion add-on: [augleao/onedrive-backup-machine](https://github.com/augleao/onedrive-backup-machine)
 - Minimum Home Assistant: 2025.1.0
 
 ## How this differs from the official OneDrive integration
@@ -14,31 +15,25 @@ Home Assistant Core ships a built-in [OneDrive](https://www.home-assistant.io/in
 
 This project is different:
 
-| | Official `onedrive` (Core) | This integration (`onedrive_backup`) |
+| | Official `onedrive` (Core) | This project |
 | --- | --- | --- |
-| Purpose | Store HA backups in OneDrive | Dashboard UI for a separate backup-machine companion |
-| Works alone? | Yes | No — needs a reachable companion API/add-on |
-| Typical use | Automatic HA backup location | Monitor/trigger companion sync/backup jobs |
-| Install path | Settings → Devices & services | HACS + companion API/add-on |
+| Direction | HA backups → OneDrive | OneDrive files → local disk |
+| Purpose | Backup Home Assistant | Local backup machine for cloud files |
+| Standalone? | Yes | Needs the companion add-on/API |
+| Install path | Settings → Devices & services | Supervisor add-on + HACS integration |
 
-If you only need “back up Home Assistant to OneDrive”, use the [official OneDrive integration](https://www.home-assistant.io/integrations/onedrive/). Use this repository only when you already run (or plan to run) the companion OneDrive Backup Machine API/add-on and want sensors/buttons for it in Home Assistant.
+If you only need “back up Home Assistant to OneDrive”, use the [official OneDrive integration](https://www.home-assistant.io/integrations/onedrive/).
 
-## What it provides
+## Companion add-on (required)
 
-- Sensors for latest job status, errors, downloaded count, and skipped count
-- A Run Now button entity
-- Task-specific Run buttons created from the tasks currently available
-- The `onedrive_backup.run_task` service for automations and scripts
+Install and documentation: https://github.com/augleao/onedrive-backup-machine
 
-## Companion requirement
-
-This integration is a thin HTTP client. After install it only works if a companion OneDrive Backup Machine API (or Supervisor add-on that exposes the same API) is reachable at `addon_url`.
-
-The companion is distributed separately from this repository. Until that companion is publicly available, this integration is useful only as a custom repository for users who already host the API themselves — not as a standalone default-catalog install.
+1. In Home Assistant: **Settings → Add-ons → Add-on Store → Repositories**
+2. Add `https://github.com/augleao/onedrive-backup-machine`
+3. Install **OneDrive Backup Machine**, set `client_id`, start it, and complete Microsoft device login in the add-on UI
+4. Install this HACS integration and point `addon_url` at the add-on API (default `http://127.0.0.1:8080`)
 
 ### Expected companion API
-
-The integration calls these endpoints on `addon_url`:
 
 | Method | Path | Purpose |
 | --- | --- | --- |
@@ -47,6 +42,13 @@ The integration calls these endpoints on `addon_url`:
 | `GET` | `/api/jobs` | List of jobs (`jobs` array) |
 | `POST` | `/api/backup` | Run default backup/sync |
 | `POST` | `/api/tasks/{task_id}/run` | Run a specific task |
+
+## What it provides
+
+- Sensors for latest job status, errors, downloaded count, and skipped count
+- A Run Now button entity
+- Task-specific Run buttons created from the tasks currently available
+- The `onedrive_backup.run_task` service for automations and scripts
 
 Example `configuration.yaml`:
 
@@ -62,7 +64,7 @@ onedrive_backup:
 2. Add this repository as an `Integration` custom repository if it is not yet in the default store.
 3. Install the integration.
 4. Restart Home Assistant.
-5. Ensure the companion API or add-on is running and reachable at the configured `addon_url`.
+5. Ensure the companion add-on is running and reachable at the configured `addon_url`.
 
 ## Included files
 
@@ -73,5 +75,5 @@ onedrive_backup:
 ## Notes
 
 - This repository starts with a fresh Git history.
-- No add-on runtime files are included here.
+- Add-on runtime files live in the companion repository, not here.
 - Brand assets are real PNG files suitable for HACS.
