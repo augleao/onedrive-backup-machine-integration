@@ -1,6 +1,6 @@
 {
   "domain": "onedrive_backup",
-  "name": "OneDrive Backup",
+  "name": "OneDrive Backup Machine",
   "codeowners": ["@augleao"],
   "dependencies": [],
   "documentation": "https://github.com/augleao/onedrive-backup-machine-integration",
