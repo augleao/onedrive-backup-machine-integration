@@ -12,7 +12,7 @@ SERVICE_RUN_TASK = "run_task"
 
 DEVICE_INFO = {
     "identifiers": {(DOMAIN, "onedrive_backup")},
-    "name": "OneDrive Backup",
+    "name": "OneDrive Backup Machine",
     "manufacturer": "augleao",
     "model": "Companion API",
 }
