@@ -26,7 +26,7 @@ If you only need “back up Home Assistant to OneDrive”, use the [official One
 
 ## Companion add-on (required)
 
-Install and documention: https://github.com/augleao/onedrive-backup-machine
+Install and documentation: https://github.com/augleao/onedrive-backup-machine
 
 1. In Home Assistant: **Settings → Add-ons → Add-on Store → Repositories**
 2. Add `https://github.com/augleao/onedrive-backup-machine`
