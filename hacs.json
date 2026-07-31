@@ -1,5 +1,5 @@
 {
-  "name": "OneDrive Backup",
+  "name": "OneDrive Backup Machine",
   "content_in_root": false,
   "homeassistant": "2025.1.0",
   "zip_release": false

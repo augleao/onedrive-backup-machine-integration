@@ -6,6 +6,13 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ## [Unreleased]
 
+## [0.2.6] - 2026-07-31
+
+### Changed
+- Confirmed `documentation` and `issue_tracker` URLs point to `augleao/onedrive-backup-machine-integration`.
+- Documented how this integration differs from the official Home Assistant Core OneDrive backup provider.
+- Documented the companion API contract and that the integration is not standalone without that companion.
+
 ## [0.2.5] - 2026-05-21
 
 ### Changed
