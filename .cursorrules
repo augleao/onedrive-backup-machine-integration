@@ -1,0 +1,68 @@
+# Regras do projeto — OneDrive Backup Machine (HACS)
+
+Este repositório é uma integração Home Assistant já publicada no HACS.
+Qualquer agente Cursor (chat, cloud agent, Composer, etc.) DEVE seguir estas regras
+em TODAS as alterações neste projeto.
+
+## Regra crítica: versionamento somente sob comando expresso
+
+HACS notifica os usuários quando há nova versão (tipicamente via bump em
+`custom_components/onedrive_backup/manifest.json` + tag Git / release).
+
+Por isso:
+
+1. **NUNCA** altere o campo `"version"` em `custom_components/onedrive_backup/manifest.json`
+   a menos que o usuário peça **explicitamente** um versionamento / release.
+2. **NUNCA** crie tags Git de versão (`vX.Y.Z`, etc.) sem comando expresso de versionamento.
+3. **NUNCA** crie GitHub Releases sem comando expresso de versionamento.
+4. **NUNCA** mova entradas do CHANGELOG de `[Unreleased]` para uma seção `[X.Y.Z]`
+   sem comando expresso de versionamento.
+5. **NUNCA** atualize a versão citada no `README.md` (ou outros docs) sem o mesmo comando.
+6. Em desenvolvimento normal (features, fixes, docs, CI, refactors):
+   - mantenha a versão atual do `manifest.json` intacta;
+   - registre mudanças apenas em `CHANGELOG.md` sob `## [Unreleased]`;
+   - faça commits/PRs normalmente **sem** tag e **sem** release.
+
+### O que conta como comando expresso de versionamento
+
+Somente pedidos claros do usuário, por exemplo:
+
+- "versão X.Y.Z"
+- "bump de versão"
+- "publicar versão"
+- "criar release"
+- "tag vX.Y.Z"
+- "versionar" / "fazer o versionamento"
+- "release para o HACS"
+
+Pedidos genéricos ("corrija", "implemente", "ajuste", "merge", "PR", "commit",
+"teste") **NÃO** autorizam bump de versão, tag ou release.
+
+Na dúvida: **não versionar**. Pergunte se o usuário quer apenas o código ou também
+um release HACS.
+
+### Fluxo esperado após testes do mantenedor
+
+Quando o usuário der o comando expresso de versionamento (após testes exaustivos):
+
+1. Definir a nova versão semântica pedida (ou sugerir a próxima se ele não especificar).
+2. Atualizar `"version"` em `custom_components/onedrive_backup/manifest.json`.
+3. Mover o conteúdo de `[Unreleased]` em `CHANGELOG.md` para `## [X.Y.Z] - YYYY-MM-DD`
+   e deixar `[Unreleased]` vazio.
+4. Atualizar a versão citada no `README.md`.
+5. Commitar essas alterações.
+6. Criar a tag `vX.Y.Z` (e release GitHub, se o usuário pedir) **somente** nesse momento.
+
+Até esse comando, usuários HACS **não** devem receber notificação de nova versão.
+
+## Escopo deste repositório
+
+- Este repo é **somente** a integração HACS (`custom_components/onedrive_backup`).
+- O companion add-on vive em outro repositório; não misturar releases dos dois projetos.
+- Preferir alterações mínimas e focadas; não refatorar fora do pedido.
+
+## Idioma
+
+O mantenedor comunica em português. Respostas ao usuário podem ser em português.
+Arquivos de código/docs existentes em inglês devem permanecer em inglês, salvo pedido
+explícito em contrário.
